@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Code is poetry. -->
+<!-- Created by Nick aka black.dragon74 -->
+<!-- This is a daemon that runs in the background and keeps our program alive -->
+<!-- The installation script takes care of installing this daemon and loading it to launchd -->
+
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>local.tbomb</string>
+	<key>Program</key>
+	<string>/bin/tbomb</string>
+	<key>RunAtLoad</key>
+	<true/>
+</dict>
+</plist>
