@@ -9,12 +9,10 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>org.nick.tbomb</string>
+	<string>local.tbomb</string>
 	<key>Program</key>
 	<string>/bin/tbomb</string>
 	<key>RunAtLoad</key>
-	<true/>
-	<key>KeepAlive</key>
 	<true/>
 </dict>
 </plist>
